@@ -38,11 +38,13 @@ function App() {
     },
     {
       product: "Special Item",
-      price: "$40.00 - $80",
+      price1: "$20.00",
+      price2: "$18.00"
     },
     {
       product: "Popular Item",
-      price: "$40.00 - $80",
+      price1: "$40.00",
+      price2: ""
     }
   ];
   return (
