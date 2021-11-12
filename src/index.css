@@ -57,3 +57,28 @@ code {
   font-size: 1.2rem;
   font-weight: 500;
 }
+
+#cardbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 5rem 9rem;
+}
+
+#img {
+  padding: 3rem;
+  color: rgb(223, 221, 221);
+  background-color: rgb(158, 158, 158);
+}
+
+#sale {
+  font-size: 0.8rem;
+  position: relative;
+  top: -2.5rem;
+  left: 7.5rem;
+  background-color: black;
+  width: 3.5rem;
+  border-radius: 0.5rem;
+  padding: 0.1rem;
+}
