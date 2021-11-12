@@ -1,14 +1,50 @@
 import './App.css';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+import { Navbar } from './Navbar';
+import { Intro } from './Intro';
 
 function App() {
+  const items = [
+    {
+      product: "Fancy Product",
+      price1: "$40.00",
+      price2: "$80.00"
+    },
+    {
+      product: "Special Item",
+      price1: "$20.00",
+      price2: "$18.00"
+    },
+    {
+      product: "Sale Item",
+      price1: "$50.00",
+      price2: "$25.00"
+    },
+    {
+      product: "Popular Item",
+      price1: "$40.00",
+      price2: ""    
+    },
+    {
+      product: "Sale Item",
+      price1: "$50.00",
+      price2: "$25.00"
+    },
+    {
+      product: "Fancy Product",
+      price1: "$123.00",
+      price2: "$280.00"
+    },
+    {
+      product: "Special Item",
+      price: "$40.00 - $80",
+    },
+    {
+      product: "Popular Item",
+      price: "$40.00 - $80",
+    }
+  ];
   return (
     <div className="App">
       <Navbar />
@@ -17,39 +53,10 @@ function App() {
   );
 }
 
-function Navbar() {
+function Items() {
   return (
-    <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" ClassName="nav-cont" component="div" sx={{ flexGrow: 1 }}>
-            Shopping Cart
-          </Typography>
-          <Typography variant="h6" ClassName="nav-cont" component="div" sx={{ flexGrow: 1 }}>
-            Home
-          </Typography>
-          <Typography variant="h6" ClassName="nav-cont" component="div" sx={{ flexGrow: 1 }}>
-            About
-          </Typography>
-          <InputLabel id="demo-simple-select-label">Shop</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Age"
-        >
-          <MenuItem>All Products</MenuItem>
-          <MenuItem>Popular Items</MenuItem>
-          <MenuItem>New Arrivals</MenuItem>
-        </Select>
-        </Toolbar>
-      </AppBar>
-  )
-}
+    <div>
 
-function Intro() {
-  return (
-    <div id="intro-div">
-      <p id="intro-title">Shop in Style <br></br> <span id="intro-span">With this shop homepage template</span></p> 
-      <p></p>
     </div>
   )
 }
