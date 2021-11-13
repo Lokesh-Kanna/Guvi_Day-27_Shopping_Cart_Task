@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-export function Navbar() {
+export function Navbar({cart}) {
   return (
     <AppBar position="static">
       <Toolbar>
@@ -35,7 +35,7 @@ export function Navbar() {
         <div>
         <Button style={{color: "white"}}>
           <ShoppingCartIcon />
-          Cart</Button>
+          Cart ({cart})</Button>
         </div>
       </Toolbar>
     </AppBar>

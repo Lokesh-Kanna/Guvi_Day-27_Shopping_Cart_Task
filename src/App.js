@@ -7,7 +7,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from '@mui/material/Typography';
 import { useState } from "react";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 function App() {
   const items = [
@@ -52,16 +51,23 @@ function App() {
       price2: "",
     },
   ];
+  const [cart, setCart] = useState(0);
+  const addtocart = () => {
+    setCart(cart + 1);
+  }
+  const removefromcart = () => {
+    setCart(cart-1);
+  }
   return (
     <div className="App">
-      <Navbar />
+      <Navbar cart={cart} />
       <Intro />
-      <Distributer items={items}/>
+      <Distributer items={items} addtocart={addtocart} removefromcart={removefromcart}/>
     </div>
   );
 }
 
-function Distributer({items}) {
+function Distributer({items, addtocart, removefromcart}) {
   return (
       <div id="cardbox">
         {items.map((item) => {
@@ -70,6 +76,8 @@ function Distributer({items}) {
                 product={item.product}
                 price1={item.price1}
                 price2={item.price2}
+                addtocart={addtocart}
+                removefromcart={removefromcart}
                 />
           )
         })}
@@ -77,8 +85,8 @@ function Distributer({items}) {
   )
 }
 
-function Items({product, price1, price2}) {
-  const [cart, setCart] = useState(0);
+function Items({product, price1, price2, addtocart, removefromcart}) {
+  
   const sale = product == "Sale Item" || product == "Special Item"  ? true : false;
   const style = { visibility: sale ? "block" : "hidden" } 
   return (
@@ -95,19 +103,19 @@ function Items({product, price1, price2}) {
             {product}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {price1} - {price2}
+            {sale ? <><span style={{textDecoration : "line-through"}}>{price1}</span> - {price2}</> : `${price1} - ${price2}`}
           </Typography>
         </CardContent>
         <CardActions>
           <Button 
             size="small"  
             variant="outlined" 
-            onClick = {() => setCart(cart + 1)}
+            onClick = {() => addtocart()}
             >Add to cart</Button>
           <Button 
             size="small"  
             variant="outlined" 
-            onClick = {() => setCart(cart - 1)}
+            onClick = {() => removefromcart()}
             >Remove  cart</Button>
         </CardActions>
       </Card>
