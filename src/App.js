@@ -5,7 +5,7 @@ import { Intro } from "./Intro";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
 import { useState } from "react";
 
 function App() {
@@ -51,77 +51,94 @@ function App() {
       price2: "",
     },
   ];
-
   const [cart, setCart] = useState(0);
   const addtocart = () => {
     setCart(cart + 1);
-  }
+  };
   const removefromcart = () => {
-      setCart(cart-1);
-  }
+    setCart(cart - 1);
+  };
   return (
     <div className="App">
       <Navbar cart={cart} />
       <Intro />
-      <Distributer items={items} addtocart={addtocart} removefromcart={removefromcart}/>
+      <Distributer
+        items={items}
+        addtocart={addtocart}
+        removefromcart={removefromcart}
+      />
     </div>
   );
 }
 
-function Distributer({items, addtocart, removefromcart}) {
+function Distributer({ items, addtocart, removefromcart }) {
   return (
-      <div id="cardbox">
-        {items.map((item) => {
-          return (
-            <Items
-                product={item.product}
-                price1={item.price1}
-                price2={item.price2}
-                addtocart={addtocart}
-                removefromcart={removefromcart}
-                />
-          )
-        })}
-      </div>
-  )
+    <div id="cardbox">
+      {items.map((item) => {
+        return (
+          <Items
+            product={item.product}
+            price1={item.price1}
+            price2={item.price2}
+            addtocart={addtocart}
+            removefromcart={removefromcart}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
-function Items({product, price1, price2, addtocart, removefromcart}) {
+function Items({ product, price1, price2, addtocart, removefromcart }) {
   const [add, setAdd] = useState(true);
-  const sale = product == "Sale Item" || product == "Special Item"  ? true : false;
+  const sale =
+    product == "Sale Item" || product == "Special Item" ? true : false;
   const style = { visibility: sale ? "block" : "hidden" };
-  const added = () => { add ? setAdd(false) : setAdd(true) };
+  const added = () => {
+    add ? setAdd(false) : setAdd(true);
+  };
   return (
     <div>
       <Card sx={{ maxWidth: 250 }}>
         <div id="img">
           <Typography gutterBottom variant="h5" component="div">
-              <div id="sale" style={style}>Sale</div>
-              450 X 300
-            </Typography>
+            <div id="sale" style={style}>
+              Sale
+            </div>
+            450 X 300
+          </Typography>
         </div>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {product}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {sale ? <><span style={{textDecoration : "line-through"}}>{price1}</span> - {price2}</> : `${price1} - ${price2}`}
+            {sale ? (
+              <>
+                <span style={{ textDecoration: "line-through" }}>{price1}</span>{" "}
+                - {price2}
+              </>
+            ) : (
+              `${price1} - ${price2}`
+            )}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button 
-            size="small"  
-            variant="outlined" 
-            // onClick = {() => {add ? setAdd(false) : setAdd(true)}}
-            onClick = {add ? () => {
-              addtocart();
-              added();
-            } : () => {
-                removefromcart()
-                added();
-              }}
-            
-            >{add ? "Add to cart" : "Remove from cart"}</Button>
+        <CardActions id="cardaction">
+          <Button
+            size="small"
+            variant="outlined"
+            onClick={
+              add ? () => {
+                    addtocart();
+                    added();
+                  } : () => {
+                      removefromcart();
+                      added();
+                    }
+            }
+          >
+            {add ? "Add to cart" : "Remove from cart"}
+          </Button>
         </CardActions>
       </Card>
     </div>
