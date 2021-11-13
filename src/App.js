@@ -57,12 +57,7 @@ function App() {
     setCart(cart + 1);
   }
   const removefromcart = () => {
-    if (cart == 0) {
-      setCart(cart)
-    }
-    else {
       setCart(cart-1);
-    }
   }
   return (
     <div className="App">
