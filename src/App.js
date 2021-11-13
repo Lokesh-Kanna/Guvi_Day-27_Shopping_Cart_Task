@@ -6,6 +6,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from '@mui/material/Typography';
+import { useState } from "react";
 
 function App() {
   const items = [
@@ -76,8 +77,9 @@ function Distributer({items}) {
 }
 
 function Items({product, price1, price2}) {
+  const [cart, setCart] = useState(0);
+
   const sale = product == "Sale Item" || product == "Special Item"  ? true : false;
-  console.log(sale)
   const style = { visibility: sale ? "block" : "hidden" } 
   return (
     <div>
@@ -97,8 +99,16 @@ function Items({product, price1, price2}) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" variant="outlined">Add to cart</Button>
-          <Button size="small" variant="outlined">Remove  cart</Button>
+          <Button 
+            size="small"  
+            variant="outlined" 
+            onClick = {() => setCart(cart + 1)}
+            >Add to cart</Button>
+          <Button 
+            size="small"  
+            variant="outlined" 
+            onClick = {() => setCart(cart - 1)}
+            >Remove  cart</Button>
         </CardActions>
       </Card>
     </div>

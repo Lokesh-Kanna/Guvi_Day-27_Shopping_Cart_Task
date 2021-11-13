@@ -13,12 +13,14 @@ code {
 }
 
 .css-hip9hq-MuiPaper-root-MuiAppBar-root {
-  align-items: flex-start;
+  display: flex !important;
   
 }
 
 .css-1t29gy6-MuiToolbar-root {
+  display: flex !important;
   gap: 2rem !important;
+  justify-content: space-between;
 }
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
@@ -32,8 +34,20 @@ code {
   color: white !important;
 }
 
-.nav-cont {
-  color: "black" !important;
+/* for cart  */
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  font-size: 1.21rem !important;
+  gap: 0.5rem;
+}
+
+#navbar {
+  display: flex !important;
+  gap: 1rem;
+}
+
+#demo-simple-select-label {
+  font-size: 1.21rem;
+  font-weight: 550 !important;
 }
 
 #intro-div {
@@ -63,7 +77,7 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2rem;
-  margin: 5rem 9rem;
+  margin: 5rem 11rem;
 }
 
 #img {
