@@ -51,12 +51,18 @@ function App() {
       price2: "",
     },
   ];
+
   const [cart, setCart] = useState(0);
   const addtocart = () => {
     setCart(cart + 1);
   }
   const removefromcart = () => {
-    setCart(cart-1);
+    if (cart == 0) {
+      setCart(cart)
+    }
+    else {
+      setCart(cart-1);
+    }
   }
   return (
     <div className="App">
@@ -86,9 +92,10 @@ function Distributer({items, addtocart, removefromcart}) {
 }
 
 function Items({product, price1, price2, addtocart, removefromcart}) {
-  
+  const [add, setAdd] = useState(true);
   const sale = product == "Sale Item" || product == "Special Item"  ? true : false;
-  const style = { visibility: sale ? "block" : "hidden" } 
+  const style = { visibility: sale ? "block" : "hidden" };
+  const added = () => { add ? setAdd(false) : setAdd(true) };
   return (
     <div>
       <Card sx={{ maxWidth: 250 }}>
@@ -110,13 +117,16 @@ function Items({product, price1, price2, addtocart, removefromcart}) {
           <Button 
             size="small"  
             variant="outlined" 
-            onClick = {() => addtocart()}
-            >Add to cart</Button>
-          <Button 
-            size="small"  
-            variant="outlined" 
-            onClick = {() => removefromcart()}
-            >Remove  cart</Button>
+            // onClick = {() => {add ? setAdd(false) : setAdd(true)}}
+            onClick = {add ? () => {
+              addtocart();
+              added();
+            } : () => {
+                removefromcart()
+                added();
+              }}
+            
+            >{add ? "Add to cart" : "Remove from cart"}</Button>
         </CardActions>
       </Card>
     </div>
