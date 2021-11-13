@@ -7,6 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from '@mui/material/Typography';
 import { useState } from "react";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 function App() {
   const items = [
@@ -62,23 +63,22 @@ function App() {
 
 function Distributer({items}) {
   return (
-    <div id="cardbox">
-      {items.map((item) => {
-        return (
-          <Items 
-              product={item.product}
-              price1={item.price1}
-              price2={item.price2}
-              />
-        )
-      })}
-    </div>
+      <div id="cardbox">
+        {items.map((item) => {
+          return (
+            <Items
+                product={item.product}
+                price1={item.price1}
+                price2={item.price2}
+                />
+          )
+        })}
+      </div>
   )
 }
 
 function Items({product, price1, price2}) {
   const [cart, setCart] = useState(0);
-
   const sale = product == "Sale Item" || product == "Special Item"  ? true : false;
   const style = { visibility: sale ? "block" : "hidden" } 
   return (
